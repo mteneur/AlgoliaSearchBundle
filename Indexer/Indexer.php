@@ -104,11 +104,13 @@ class Indexer
         $this->indexNamePrefix = $indexNamePrefix;
     }
 
-    public function setApiSettings($application_id, $api_key)
+    public function setApiSettings($application_id, $api_key, $api_timeout)
     {
         $this->apiSettings = [
             'application_id' => $application_id,
-            'api_key' => $api_key
+            'api_key' => $api_key,
+            'api_timeout' => $api_timeout
+
         ];
 
         return $this;
@@ -647,6 +649,8 @@ class Indexer
                 $this->apiSettings['application_id'],
                 $this->apiSettings['api_key']
             );
+            $this->client->setConnectTimeout($this->apiSettings['api_timeout']);
+
         }
 
         return $this->client;
