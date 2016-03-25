@@ -28,6 +28,9 @@ class AlgoliaAlgoliaSearchExtension extends Extension
         if (isset($config['api_key']))
             $container->setParameter('algolia.api_key', $config['api_key']);
 
+        if (isset($config['api_timeout']))
+            $container->setParameter('algolia.api_timeout', $config['api_timeout']);
+
         $container->setParameter('algolia.catch_log_exceptions', $config['catch_log_exceptions']);
         $container->setParameter('algolia.index_name_prefix', $config['index_name_prefix']);
 
